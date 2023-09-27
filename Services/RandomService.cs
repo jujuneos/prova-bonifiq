@@ -2,14 +2,13 @@
 {
 	public class RandomService
 	{
-		int seed;
+		// A semente só é necessária na classe Random se precisarmos gerar os mesmos números toda vez.
 		public RandomService()
 		{
-			seed = Guid.NewGuid().GetHashCode();
 		}
 		public int GetRandom()
 		{
-			return new Random(seed).Next(100);
+			return new Random().Next(100);
 		}
 
 	}
