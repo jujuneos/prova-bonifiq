@@ -24,12 +24,12 @@ namespace ProvaPub.Controllers
             _ctx = ctx;
         }
 
-        [HttpGet("CanPurchase")]
-		public async Task<bool> CanPurchase(int customerId, decimal purchaseValue)
-		{
-			CustomerService svc = new CustomerService(_ctx);
+  //      [HttpGet("CanPurchase")]
+		//public async Task<bool> CanPurchase(int customerId, decimal purchaseValue)
+		//{
+		//	CustomerService svc = new CustomerService(_ctx);
 
-			return await svc.CanPurchase(customerId, purchaseValue);
-		}
+		//	return await svc.CanPurchase(customerId, purchaseValue);
+		//}
 	}
 }

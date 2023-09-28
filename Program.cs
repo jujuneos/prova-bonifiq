@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using ProvaPub.Interfaces;
 using ProvaPub.Repository;
 using ProvaPub.Services;
 
@@ -10,6 +11,8 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddSingleton<IPaginationService, PaginationService>();
 
 builder.Services.AddSingleton<RandomService>();
 builder.Services.AddDbContext<TestDbContext>(options =>
