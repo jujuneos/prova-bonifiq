@@ -1,27 +1,28 @@
-﻿using ProvaPub.Models;
+﻿using ProvaPub.Enums;
+using ProvaPub.Models;
 
 namespace ProvaPub.Services
 {
 	public class OrderService
 	{
-		public async Task<Order> PayOrder(string paymentMethod, decimal paymentValue, int customerId)
+		public async Task<Order> PayOrder(Payment payment, int customerId)
 		{
-			if (paymentMethod == "pix")
+			switch (payment.PaymentType)
 			{
-				//Faz pagamento...
-			}
-			else if (paymentMethod == "creditcard")
-			{
-				//Faz pagamento...
-			}
-			else if (paymentMethod == "paypal")
-			{
-				//Faz pagamento...
+				case PaymentType.Pix:
+					// Faz pagamento...
+					break;
+				case PaymentType.CreditCard:
+					// Faz pagamento...
+					break;
+				case PaymentType.PayPal:
+					// Faz pagamento...
+					break;
 			}
 
 			return await Task.FromResult( new Order()
 			{
-				Value = paymentValue
+				Value = payment.Value
 			});
 		}
 	}

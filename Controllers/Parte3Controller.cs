@@ -7,19 +7,21 @@ namespace ProvaPub.Controllers
 {
 	
 	/// <summary>
-	/// Esse teste simula um pagamento de uma compra.
-	/// O método PayOrder aceita diversas formas de pagamento. Dentro desse método é feita uma estrutura de diversos "if" para cada um deles.
-	/// Sabemos, no entanto, que esse formato não é adequado, em especial para futuras inclusões de formas de pagamento.
-	/// Como você reestruturaria o método PayOrder para que ele ficasse mais aderente com as boas práticas de arquitetura de sistemas?
+	/// 
+	/// Foi criado um Enum chamado PaymentType para cadastrar os tipos de pagamento.
+	/// Também foi criada uma nova entidade chamada Payment, com as propriedades Value e PaymentType.
+	/// No método PayOrder foi utilizado um switch/case com os tipos de pagamento cadastrados no enum.
+	/// Dessa forma fica mais organizado e mais fácil de adicionar novos tipos sem mudar muita coisa no método PayOrder.
+	/// 
 	/// </summary>
 	[ApiController]
 	[Route("[controller]")]
 	public class Parte3Controller :  ControllerBase
 	{
 		[HttpGet("orders")]
-		public async Task<Order> PlaceOrder(string paymentMethod, decimal paymentValue, int customerId)
+		public async Task<Order> PlaceOrder(Payment payment, int customerId)
 		{
-			return await new OrderService().PayOrder(paymentMethod, paymentValue, customerId);
+			return await new OrderService().PayOrder(payment, customerId);
 		}
 	}
 }
