@@ -22,7 +22,9 @@ namespace ProvaPub.Services
 
 			return await Task.FromResult( new Order()
 			{
-				Value = payment.Value
+				Value = payment.Value,
+				CustomerId = customerId,
+				OrderDate = DateTime.Now
 			});
 		}
 	}

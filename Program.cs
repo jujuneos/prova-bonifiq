@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using Moq;
 using ProvaPub.Interfaces;
 using ProvaPub.Repository;
 using ProvaPub.Services;
@@ -13,10 +14,12 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddSingleton<IPaginationService, PaginationService>();
-
 builder.Services.AddSingleton<RandomService>();
 builder.Services.AddDbContext<TestDbContext>(options =>
 	options.UseSqlServer(builder.Configuration.GetConnectionString("ctx")));
+
+builder.Services.AddScoped<CustomerService>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
