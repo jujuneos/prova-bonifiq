@@ -1,6 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Moq;
-using ProvaPub.Interfaces;
 using ProvaPub.Models;
 using ProvaPub.Repository;
 using ProvaPub.Services;
@@ -76,6 +74,7 @@ namespace ProvaPub.Tests
 
             // Assert
             Assert.Throws<InvalidOperationException>(() => customerService.CanPurchase(5, 40));
+            context.Dispose();
         }
 
         [Fact]
@@ -102,6 +101,7 @@ namespace ProvaPub.Tests
 
             // Assert
             Assert.False(result);
+            context.Dispose();
         }
 
         [Fact]
@@ -125,6 +125,7 @@ namespace ProvaPub.Tests
 
             // Assert
             Assert.False(result);
+            context.Dispose();
         }
 
         [Fact]
@@ -148,6 +149,7 @@ namespace ProvaPub.Tests
 
             // Assert
             Assert.True(result);
+            context.Dispose();
         }
     }
 }
